@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import os
-from typing import List
+from typing import List, Tuple
 from pprint import pprint
 import re
 
@@ -15,7 +15,7 @@ def list_movies() -> List[str]:
         all_movies.extend(movies)
     return all_movies
 
-def clean_movie_name(movie_name: str)-> str:
+def clean_movie_name(movie_name: str)-> Tuple[str, str, str]:
     year = None
     year_search = re.findall("\d{4}", movie_name)
     if year_search and len(year_search) > 0:
