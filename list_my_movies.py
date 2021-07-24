@@ -8,14 +8,19 @@ import re
 def list_movies() -> List[str]:
     all_movies = []
     movies_path = os.path.join("/media/aminuolawale/TOSHIBA EXT/Movies")
+    if not os.path.exists(movies_path):
+        print("Hard disk TOSHIBA EXT not connected")
+        return
     movie_categories = os.listdir(movies_path)
     for cat in movie_categories:
         category_folder = os.path.join(movies_path, cat)
-        movies = [ (*clean_movie_name(a),cat.upper()) for a in os.listdir(category_folder)]
+        movies = [(*clean_movie_name(a), cat.upper())
+                  for a in os.listdir(category_folder)]
         all_movies.extend(movies)
     return all_movies
 
-def clean_movie_name(movie_name: str)-> Tuple[str, str, str]:
+
+def clean_movie_name(movie_name: str) -> Tuple[str, str, str]:
     year = None
     year_search = re.findall("\d{4}", movie_name)
     if year_search and len(year_search) > 0:
@@ -32,8 +37,7 @@ def clean_movie_name(movie_name: str)-> Tuple[str, str, str]:
     return cleaned_movie_name, year, resolution
 
 
-
 if __name__ == "__main__":
-    result = list_movies()
-    # result = clean_movie_name("Bacurau (2019) [1080p] [BluRay] [5.1] [YTS.MX]")
+    # result = list_movies()
+    result = clean_movie_name("Bacurau (2019) [1080p] [BluRay] [5.1] [YTS.MX]")
     pprint(result)
