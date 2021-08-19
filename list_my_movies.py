@@ -6,6 +6,7 @@ import re
 
 
 def list_movies() -> List[str]:
+    # list all movies in dir
     all_movies = []
     movies_path = os.path.join("/media/aminuolawale/TOSHIBA EXT/Movies")
     if not os.path.exists(movies_path):
