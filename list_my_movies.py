@@ -38,6 +38,6 @@ def clean_movie_name(movie_name: str) -> Tuple[str, str, str]:
 
 
 if __name__ == "__main__":
-    result = list_movies()
+    # result = list_movies()
     result = clean_movie_name("Bacurau (2019) [1080p] [BluRay] [5.1] [YTS.MX]")
     pprint(result)
